@@ -8,6 +8,7 @@ const CustomVideo = ({data}: any) => {
   const [videoId, setVideoId] = useState<number | string>(0);
   const [isPaused, setPause] = useState(false);
   const [viewable, setViewable] = useState(true);
+  const [onLoad, setOnLoad] = useState(true);
   const videoRef = useRef<Video>();
   return (
     <View style={{width: WIDTH, height: HEIGHT}}>
@@ -29,6 +30,10 @@ const CustomVideo = ({data}: any) => {
         resizeMode="cover"
         preload="auto"
         paused={isPaused}
+        audioOnly
+        onLoadStart={() => console.log('VIDEO LOADINGstart')}
+        onLoad={() => console.log('VIDEO ---onload')}
+        onVideoLoad={() => console.log('---onload---VIDEO')}
       />
       <TouchableOpacity
         style={{
